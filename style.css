@@ -1,0 +1,254 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+p {
+  line-height: 1.6;
+  font-weight: 200;
+  font-size: 18px;
+}
+
+.display-none {
+  display: none;
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 304px;
+  gap: 30px;
+}
+.container > section {
+  background: white;
+  min-height: 50vh;
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.player-unit {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+figure.logo {
+  width: 44px;
+  height: 44px;
+  margin: 0 10px;
+}
+
+svg.icon {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease-in-out;
+}
+a.button {
+  background: #f05414;
+  color: white;
+  border-radius: 18px;
+  padding: 7px 16px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+a.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 3px white;
+  -moz-box-shadow: 0px 0px 0px 3px white;
+  box-shadow: 0px 0px 0px 3px white;
+}
+a.control {
+  opacity: 0.5;
+  display: inline-block;
+  padding: 0 8px;
+}
+a.control:hover {
+  opacity: 1;
+}
+
+.player-bg {
+  border-radius: 4px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  background: lightgray;
+  background: url("assets/1.jpeg");
+  background-size: cover;
+}
+.player-bg:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+}
+
+.player-content {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.player-content .stepper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+.player-content .stepper span {
+  border-radius: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.player-content .stepper span:first-of-type {
+  background: white;
+}
+.player-content .top-bar {
+  padding: 8px;
+  color: white;
+  display: flex;
+  width: 100%;
+}
+.player-content .top-bar .left {
+  display: flex;
+  flex-grow: 1;
+}
+.player-content .top-bar .left .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.player-content .top-bar .left .details h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.player-content .top-bar .left .details span {
+  font-size: 14px;
+  font-weight: 300;
+  opacity: 0.7;
+}
+.player-content .top-bar .left .details * {
+  margin: 0;
+  padding: 0;
+}
+.player-content .top-bar .right {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+.player-content .mid {
+  flex-grow: 1;
+  display: flex;
+}
+.player-content .bottom {
+  align-items: center;
+  padding: 30px 15px;
+  display: flex;
+  width: 100;
+}
+.player-content .bottom .left {
+  flex-grow: 1;
+}
+.player-content .bottom .video-controls {
+  display: flex;
+}
+.player-content .bottom .video-controls figure {
+  margin-right: 10px;
+}
+
+.sub-player {
+  max-width: 80%;
+  margin-top: -19px;
+  position: relative;
+  z-index: 7;
+  padding: 0 0 16px 16px;
+}
+.sub-player a {
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+.sub-player a:before {
+  transform-origin: top right;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: calc(100% - 2px);
+  background: #f05414;
+  left: 0px;
+  top: 1px;
+  z-index: 7;
+}
+.sub-player h1 {
+  font-size: 24px;
+  align-self: flex-end;
+  margin: 0;
+}
+.sub-player h1 span {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 4px 8px 4px 12px;
+  line-height: 1.6;
+  background: #f1f1f1;
+  transition: all 0.2s linear;
+}
+.sub-player a.main-title h1 span:hover {
+  background: #f05414;
+  color: white;
+}
+
+@keyframes slideText {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes textReveal {
+  0%, 50% {
+    color: transparent;
+  }
+  100% {
+    color: initial;
+  }
+}
+h1 span {
+  animation: textReveal 0.8s;
+}
+
+h1 {
+  animation: slideText 0.4s ease-in-out;
+}
+
+/*# sourceMappingURL=style.css.map */
