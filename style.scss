@@ -99,6 +99,7 @@ a {
         display: inline-block;
         text-transform: uppercase;
         font-size: 18px;
+        font-weight: 500;
         @media (min-width: $break-2) {
             font-size: 15px;
         }
