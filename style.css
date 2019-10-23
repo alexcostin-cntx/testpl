@@ -171,7 +171,6 @@ a.control:hover {
   display: none;
 }
 .player-bg .slides img {
-  transition: all 1s ease-in-out;
   height: 100%;
   width: auto;
 }
@@ -252,7 +251,6 @@ a.control:hover {
   align-items: center;
 }
 .player-content .mid {
-  cursor: pointer;
   flex-grow: 1;
   display: flex;
 }
