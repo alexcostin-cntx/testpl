@@ -34,7 +34,7 @@ p{
 
 
 
-.display-none {display: none;}
+.display-none {display: none !important}
 
 //---------------------page specific----------------------------
 //--------------------------------------------------------------
@@ -46,7 +46,10 @@ p{
         background: white;
         min-height: 50vh;
         border-radius: 4px;
+        padding: $padding/2;
+        @media (min-width: $break-2) {
         padding: $padding;
+        }
     }
     @media (min-width: $break-1) {
         display: grid;
@@ -55,8 +58,10 @@ p{
     }
 }
 
-
- 
+figure {
+    margin:0;
+        padding: 0;
+}
 
 
 //---------------------player----------------------------
@@ -76,15 +81,7 @@ p{
     border-bottom: 1px solid #d8d8d8;
 }
 
-figure {
-    margin:0;
-    padding: 0;
-    &.logo {
-        width: 44px;
-        height: 44px;
-        margin: 0 10px;
-    }
-}
+
 
 svg.icon{
     width: 24px;
@@ -97,24 +94,56 @@ a {
     color: inherit;
     transition: $transition;
     &.button {
-        background: $accent;
-        color: white;
         border-radius: 18px;
         padding: 7px 16px;
         display: inline-block;
         text-transform: uppercase;
-        font-size: 15px;
+        font-size: 18px;
+        @media (min-width: $break-2) {
+            font-size: 15px;
+        }
         letter-spacing: 0.5px;
-        &:hover {
+        &.v1 {
+            background: $accent;
+            color: white;
+            &:hover {
+                -webkit-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+                -moz-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+                box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+            }
+        }
+        &.v2 {
+            background: $accent;
+            color: white;
             -webkit-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
             -moz-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
             box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+            &:hover {
+             background: white;
+             color: $accent;
+            }
         }
+        &.v3 {
+            background: white;
+            color: $accent;
+            
+            &:hover {
+                background: $accent;
+            color: white;
+            -webkit-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+            -moz-box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+            box-shadow:  0px 0px 0px 3px rgba(255,255,255,1);
+            }
+        }
+        
     }
     &.control {
-        opacity: 0.5;
+        @media (min-width: $break-2) {
+            opacity: 0.7;
+        }
         display: inline-block;
         padding: 0 8px;
+        filter: drop-shadow(0 0 3px rgba(0,0,0, 0.5));
         &:hover {opacity: 1}
     }
 
@@ -129,8 +158,6 @@ a {
     padding-top: calc(375 / 320 * 100%);
     width: 100%; 
     position: relative;
-    background: lightgray;
-    background: url('assets/1.jpeg');
     background-size: cover;
     background-position: top center;
     @media (min-width: $break-2) {
@@ -149,6 +176,33 @@ a {
         left: 0;
         opacity: 0.2;
     }  
+
+    .slides{
+        position: absolute;
+        top:0;
+        left: 0;
+        right:0;
+        bottom: 0;
+        width: 100%;
+        >div {display:none;}
+        .slide-active {
+            display: block;
+            height: 100%;
+            @media (min-width: $break-2) {
+                display: block;
+            }
+        }
+        .slide-hidden {display: none;}
+        img {
+            transition: all 1s ease-in-out;
+            height: 100%;
+            width: auto;
+            @media (min-width: $break-2) {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }
 
 .player-content {
@@ -176,7 +230,16 @@ a {
         }
     }
 
-    .top-bar {
+    .top-bar-v1 {
+        figure {
+            margin:0;
+            padding: 0;
+            &.logo {
+                width: 44px;
+                height: 44px;
+                margin: 0 10px;
+            }
+        }
         padding: $player-padding;
         color: white;
         display: flex;
@@ -185,6 +248,7 @@ a {
         .left {
             display: flex;
             flex-grow: 1;
+
             .details {
                 display: flex;
                 flex-direction: column;
@@ -194,11 +258,13 @@ a {
                     text-transform: uppercase;
                     font-weight: 500;
                     margin-bottom: 2px;
+                    text-shadow: 1px 1px 5px rgba(0,0,0, 0.4);
                 }
                 span {
                     font-size: 14px;
                     font-weight: 300;
                     opacity: 0.7;
+                    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
                 }
                 * {margin:0; padding:0}
             }
@@ -209,6 +275,7 @@ a {
         }
     }
     .mid {
+        cursor: pointer;
         flex-grow: 1;
         display: flex;
     }
@@ -245,17 +312,19 @@ a {
             display: block;
             position: absolute;
             width: 6px;
-            height: calc(100% - 2px);
+            // height: calc(100% - 2px);
+            height: 100%;
             background: $accent;
             left: 0px;
-            top: 1px;
+            top: 0;
             z-index: 7;
         }
     }
     h1 {
+        .title-active {display: initial}
         font-size: 18px;
         @media (min-width: $break-2) {
-            font-size: 22px;
+            font-size: 20px;
         }
         font-weight: 500;;
         align-self: flex-end;
@@ -311,6 +380,43 @@ a {
         }
 }
 
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100%)
+    }
+    100% {
+        transform: translateX(0%)
+    }
+}
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0%)
+    }
+    100% {
+        transform: translateX(-100%)
+    }
+}
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(100%)
+    }
+    100% {
+        transform: translateX(0%)
+    }
+}
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%)
+    }
+    100% {
+        transform: translateX(0%)
+    }
+}
+.slide-left {animation: slideLeft .5s ease-in-out}
+.slide-right {animation: slideRight .5s ease-in-out}
+.slide-from-left {animation: slideFromLeft .5s ease-in-out}
+.slide-from-right {animation: slideFromRight .5s ease-in-out}
+
 //------------------animation usage----------------------
 //-------------------------------------------------------
 
@@ -322,8 +428,61 @@ a {
 }
 
 h1 {
-    animation: slideText 0.4s ease-in-out ;
+    // animation: slideText 0.4s ease-in-out ;
     span section {
         animation: textHide 0.6s ;
     }
+}
+
+
+.top-bar-v2 {
+    figure {
+        
+        &.logo {
+            width: 189px;
+            height: 27px;
+            margin: 0 10px;
+        }
+    }
+    padding: $player-padding;
+    color: white;
+    display: flex;
+    width: 100%;
+    .left {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        @media (min-width: $break-2) {
+            flex-direction: row;
+        }
+        .details {
+            padding: $padding/4 $padding/2;
+            display: flex;
+            flex-direction: row;
+            h2 {
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: 400;
+                margin-bottom: 2px;
+                text-shadow: 1px 1px 5px rgba(0,0,0, 0.4);
+                margin-right: 6px;
+            }
+            span {
+                font-size: 14px;
+                font-weight: 400;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            }
+            * {margin:0; padding:0}
+        }
+    }
+    .right {
+        display: flex;
+        @media (min-width: $break-2) {
+            align-items: center;
+        }
+    }
+}
+
+.secondary {
+    h4 {margin-bottom: 10px;}
 }
