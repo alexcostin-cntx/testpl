@@ -102,15 +102,17 @@ buttonThree = () => {
 
 // cycle logos 
 // ---------------------
-
-
 document.addEventListener('click', function (event) {
 
 	if (!event.target.matches('.logobtn')) return;
 	event.preventDefault();
     let _asd = event.target.dataset.logo;
-    console.log(_asd);
     
     let logoasset = document.querySelector('.logoasset');
     logoasset.src=`assets/logo/${_asd}.png`
 }, false);
+
+
+// change title 
+// ---------------------
+ const mainTitle = document.querySelector('.main-title');
