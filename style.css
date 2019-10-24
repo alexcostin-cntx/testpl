@@ -108,7 +108,10 @@ a.button.v3:hover {
   box-shadow: 0px 0px 0px 3px white;
 }
 a.control {
-  display: inline-block;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
   padding: 0 8px;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
 }
@@ -119,6 +122,8 @@ a.control {
 }
 a.control:hover {
   opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+  filter: none;
 }
 
 .player-bg {
@@ -140,13 +145,12 @@ a.control:hover {
   content: "";
   display: block;
   width: 100%;
-  height: 100%;
-  background: #000;
+  height: 30%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6867121849) 0%, rgba(0, 0, 0, 0) 100%);
   position: absolute;
   z-index: 1;
-  top: 0;
+  bottom: 0;
   left: 0;
-  opacity: 0.2;
 }
 .player-bg .slides {
   position: absolute;
@@ -162,6 +166,7 @@ a.control:hover {
 .player-bg .slides .slide-active {
   display: block;
   height: 100%;
+  animation: shrinkSlide 4.5s linear;
 }
 @media (min-width: 600px) {
   .player-bg .slides .slide-active {
@@ -219,29 +224,35 @@ a.control:hover {
 .player-content .top-bar-v1 figure.logo {
   width: 44px;
   height: 44px;
-  margin: 0 10px;
+  margin: 0 0 0 10px;
+  background: white;
+}
+.player-content .top-bar-v1 figure.logo img {
+  width: 100%;
 }
 .player-content .top-bar-v1 .left {
   display: flex;
   flex-grow: 1;
 }
 .player-content .top-bar-v1 .left .details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-left: 4px;
 }
 .player-content .top-bar-v1 .left .details h2 {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 500;
-  margin-bottom: 2px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  background: #f1f1f1;
+  display: block;
+  color: black;
+  padding: 3px 6px;
 }
 .player-content .top-bar-v1 .left .details span {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   opacity: 0.7;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  background: black;
+  display: inline-block;
+  padding: 3px 4px;
 }
 .player-content .top-bar-v1 .left .details * {
   margin: 0;
@@ -249,7 +260,6 @@ a.control:hover {
 }
 .player-content .top-bar-v1 .right {
   display: flex;
-  align-items: center;
 }
 .player-content .mid {
   flex-grow: 1;
@@ -298,6 +308,7 @@ a.control:hover {
   left: 0px;
   top: 0;
   z-index: 7;
+  animation: slideAccentBar 5s linear;
 }
 .sub-player h1 {
   font-size: 18px;
@@ -347,6 +358,14 @@ a.control:hover {
     transform: translateY(0);
   }
 }
+@keyframes textAway {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 @keyframes textHide {
   0%, 60% {
     color: transparent;
@@ -355,91 +374,68 @@ a.control:hover {
     color: inherit;
   }
 }
-@keyframes slideRight {
+@keyframes slideAccentBar {
   0% {
-    transform: translateX(-100%);
+    transform: translateY(100%);
+  }
+  4% {
+    transform: translateY(0%);
+  }
+  94% {
+    transform: translateY(0%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateY(-100%);
   }
 }
-@keyframes slideLeft {
+@keyframes shrinkSlide {
   0% {
-    transform: translateX(0%);
+    transform: scale(1.1);
   }
   100% {
-    transform: translateX(-100%);
+    transform: scale(1);
   }
 }
-@keyframes slideFromLeft {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-@keyframes slideFromRight {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-.slide-left {
-  animation: slideLeft 0.5s ease-in-out;
-}
-
-.slide-right {
-  animation: slideRight 0.5s ease-in-out;
-}
-
-.slide-from-left {
-  animation: slideFromLeft 0.5s ease-in-out;
-}
-
-.slide-from-right {
-  animation: slideFromRight 0.5s ease-in-out;
-}
-
 h1 span section .text-1 {
-  animation: textReveal 0.4s ease-in-out;
-  animation-delay: 0.0526315789s;
-}
-
-h1 span section .text-2 {
-  animation: textReveal 0.4s ease-in-out;
+  animation: textReveal 0.8s ease-in-out;
   animation-delay: 0.1052631579s;
 }
 
-h1 span section .text-3 {
-  animation: textReveal 0.4s ease-in-out;
-  animation-delay: 0.1578947368s;
-}
-
-h1 span section .text-4 {
-  animation: textReveal 0.4s ease-in-out;
+h1 span section .text-2 {
+  animation: textReveal 0.8s ease-in-out;
   animation-delay: 0.2105263158s;
 }
 
-h1 span section .text-5 {
-  animation: textReveal 0.4s ease-in-out;
-  animation-delay: 0.2631578947s;
-}
-
-h1 span section .text-6 {
-  animation: textReveal 0.4s ease-in-out;
+h1 span section .text-3 {
+  animation: textReveal 0.8s ease-in-out;
   animation-delay: 0.3157894737s;
 }
 
-h1 span section .text-7 {
-  animation: textReveal 0.4s ease-in-out;
-  animation-delay: 0.3684210526s;
+h1 span section .text-4 {
+  animation: textReveal 0.8s ease-in-out;
+  animation-delay: 0.4210526316s;
 }
 
+h1 span section .text-5 {
+  animation: textReveal 0.8s ease-in-out;
+  animation-delay: 0.5263157895s;
+}
+
+h1 span section .text-6 {
+  animation: textReveal 0.8s ease-in-out;
+  animation-delay: 0.6315789474s;
+}
+
+h1 span section .text-7 {
+  animation: textReveal 0.8s ease-in-out;
+  animation-delay: 0.7368421053s;
+}
+
+h1 {
+  animation: slideText 0.8s ease-in-out;
+}
 h1 span section {
-  animation: textHide 0.6s;
+  animation: textHide 1.2s;
 }
 
 .top-bar-v2 {

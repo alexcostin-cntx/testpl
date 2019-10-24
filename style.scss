@@ -142,10 +142,14 @@ a {
         @media (min-width: $break-2) {
             opacity: 0.7;
         }
-        display: inline-block;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        // display: inline-block;
         padding: 0 8px;
         filter: drop-shadow(0 0 3px rgba(0,0,0, 0.5));
-        &:hover {opacity: 1}
+        &:hover {opacity: 1; background: rgba(0,0,0,0.2); filter: none}
     }
 
 }
@@ -169,13 +173,13 @@ a {
         content: "";
         display: block;
         width: 100%;
-        height: 100%;
-        background: #000;
+        height: 30%;
+        background: linear-gradient(0deg, rgba(0,0,0,0.6867121848739496) 0%, rgba(0,0,0,0) 100%);
         position: absolute;
         z-index: 1;
-        top: 0;
+        bottom: 0;
         left: 0;
-        opacity: 0.2;
+        // opacity: 0.2;
     }  
 
     .slides{
@@ -189,6 +193,7 @@ a {
         .slide-active {
             display: block;
             height: 100%;
+            animation: shrinkSlide 4.5s linear;
             @media (min-width: $break-2) {
                 display: block;
             }
@@ -237,7 +242,12 @@ a {
             &.logo {
                 width: 44px;
                 height: 44px;
-                margin: 0 10px;
+                margin: 0 0 0 10px;
+                background: white;
+                // padding: 2px;
+                img {
+                    width: 100%;
+                }
             }
         }
         padding: $player-padding;
@@ -250,28 +260,30 @@ a {
             flex-grow: 1;
 
             .details {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+                margin-left: 4px;
                 h2 {
                     font-size: 14px;
                     text-transform: uppercase;
                     font-weight: 500;
-                    margin-bottom: 2px;
-                    text-shadow: 1px 1px 5px rgba(0,0,0, 0.4);
+                    background: $gray-bg;
+                    display: block;
+                    color: black;
+                    padding: 3px 6px;
                 }
                 span {
                     font-size: 14px;
-                    font-weight: 300;
+                    font-weight: 400;
                     opacity: 0.7;
-                    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+                    background: black;
+                    display: inline-block;
+                    padding: 3px 4px;
                 }
                 * {margin:0; padding:0}
             }
         }
         .right {
             display: flex;
-            align-items: center;
+            // align-items: center;
         }
     }
     .mid {
@@ -317,6 +329,7 @@ a {
             left: 0px;
             top: 0;
             z-index: 7;
+            animation: slideAccentBar 5s linear;
         }
     }
     h1 {
@@ -369,7 +382,15 @@ a {
         transform: translateY(0);
         }
 }
-
+@keyframes textAway {
+    
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+        }
+}
 @keyframes textHide {
     0%, 60% {
         color: transparent
@@ -379,57 +400,85 @@ a {
         }
 }
 
-@keyframes slideRight {
+// @keyframes slideRight {
+//     0% {
+//         transform: translateX(-100%)
+//     }
+//     100% {
+//         transform: translateX(0%)
+//     }
+// }
+// @keyframes slideLeft {
+//     0% {
+//         transform: translateX(0%)
+//     }
+//     100% {
+//         transform: translateX(-100%)
+//     }
+// }
+// @keyframes slideFromLeft {
+//     0% {
+//         transform: translateX(100%)
+//     }
+//     100% {
+//         transform: translateX(0%)
+//     }
+// }
+// @keyframes slideFromRight {
+//     0% {
+//         transform: translateX(100%)
+//     }
+//     100% {
+//         transform: translateX(0%)
+//     }
+// }
+
+@keyframes slideAccentBar {
     0% {
-        transform: translateX(-100%)
+        transform: translateY(100%)
+    }
+    4% {
+        transform: translateY(0%)
+    }
+    94% {
+        transform: translateY(0%)
     }
     100% {
-        transform: translateX(0%)
+        transform: translateY(-100%)
     }
 }
-@keyframes slideLeft {
+
+@keyframes shrinkSlide {
     0% {
-        transform: translateX(0%)
+        transform: scale(1.1);
     }
     100% {
-        transform: translateX(-100%)
+        transform: scale(1.0);
     }
 }
-@keyframes slideFromLeft {
-    0% {
-        transform: translateX(100%)
-    }
-    100% {
-        transform: translateX(0%)
-    }
-}
-@keyframes slideFromRight {
-    0% {
-        transform: translateX(100%)
-    }
-    100% {
-        transform: translateX(0%)
-    }
-}
-.slide-left {animation: slideLeft .5s ease-in-out}
-.slide-right {animation: slideRight .5s ease-in-out}
-.slide-from-left {animation: slideFromLeft .5s ease-in-out}
-.slide-from-right {animation: slideFromRight .5s ease-in-out}
+
+
 
 //------------------animation usage----------------------
 //-------------------------------------------------------
 
+// .slide-left {animation: slideLeft .5s ease-in-out}
+// .slide-right {animation: slideRight .5s ease-in-out}
+// .slide-from-left {animation: slideFromLeft .5s ease-in-out}
+// .slide-from-right {animation: slideFromRight .5s ease-in-out}
+
 @for $i from 1 through 7 {
     h1 span section .text-#{$i} {
-        animation: textReveal 0.4s ease-in-out ; 
-        animation-delay: $i * (1s / 19);
+        animation: textReveal 0.8s ease-in-out ; 
+        animation-delay: $i * (2s / 19);
     }
 }
 
+
 h1 {
-    // animation: slideText 0.4s ease-in-out ;
+    animation: slideText 0.8s ease-in-out ;
     span section {
-        animation: textHide 0.6s ;
+        animation: textHide 1.2s ;
     }
 }
 
@@ -485,3 +534,4 @@ h1 {
 .secondary {
     h4 {margin-bottom: 10px;}
 }
+

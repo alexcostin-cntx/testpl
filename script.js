@@ -45,6 +45,14 @@ const refreshTitle = () => {
     mainTitle.style.display='block';
 }
 
+// const goAway = () => {
+//     let h1 = document.querySelector('.title-active');
+
+//     setInterval(function() {
+//         h1.classList.add('goaway');
+//     }, 4900);
+// }
+
 const growPic = () => {
     let currentImg = document.querySelector('.slide-active img');
     currentImg.style.transform = 'scale(1.2)';
@@ -56,7 +64,7 @@ const shrinkPic = () => {
 
 setInterval(function() {
     slideLeft();
-    // refreshTitle();
+    refreshTitle();
 }, 5000);
 
 // change logo (top bar)
@@ -91,3 +99,18 @@ buttonThree = () => {
     button.classList.remove('v2', 'v1');
     button.classList.add('v3')
 }
+
+// cycle logos 
+// ---------------------
+
+
+document.addEventListener('click', function (event) {
+
+	if (!event.target.matches('.logobtn')) return;
+	event.preventDefault();
+    let _asd = event.target.dataset.logo;
+    console.log(_asd);
+    
+    let logoasset = document.querySelector('.logoasset');
+    logoasset.src=`assets/logo/${_asd}.png`
+}, false);
