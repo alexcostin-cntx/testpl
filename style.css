@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
@@ -24,6 +28,12 @@ p {
 
 .display-none {
   display: none !important;
+}
+
+@media (max-width: 320px) {
+  .hide-on-small {
+    display: none;
+  }
 }
 
 .container {
@@ -54,6 +64,14 @@ figure {
   padding: 0;
 }
 
+.secondary h4 {
+  margin-bottom: 10px;
+}
+.secondary p {
+  margin: 0;
+  font-size: 16px;
+}
+
 .player-unit {
   border-bottom: 1px solid #d8d8d8;
 }
@@ -67,7 +85,7 @@ svg.icon {
 a {
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 a.button {
   border-radius: 18px;
@@ -164,10 +182,16 @@ a.control:hover {
 .player-bg .slides > div {
   display: none;
 }
+.player-bg .slides.shrink .slide-active {
+  animation: shrinkSlide 4.5s linear;
+}
+.player-bg .slides.grow .slide-active {
+  animation: growSlide 4.5s linear;
+  animation-fill-mode: forwards;
+}
 .player-bg .slides .slide-active {
   display: block;
   height: 100%;
-  animation: shrinkSlide 4.5s linear;
 }
 @media (min-width: 600px) {
   .player-bg .slides .slide-active {
@@ -227,6 +251,7 @@ a.control:hover {
   height: 28px;
   margin: 0 0 0 10px;
   background: white;
+  animation: shrinkLogo 0.5s ease-in-out;
 }
 .player-content .top-bar-v1 figure.logo img {
   width: 100%;
@@ -335,14 +360,18 @@ a.control:hover {
   background: #f1f1f1;
   transition: all 0.2s linear;
 }
+.sub-player h1 span:hover {
+  background: #f05414;
+  color: white;
+}
 .sub-player h1 span section {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
 }
-.sub-player a.main-title h1 span:hover {
-  background: #f05414;
-  color: white;
+.sub-player a.alt h1 span:hover {
+  background: #f8ab8c;
+  color: initial;
 }
 
 @keyframes slideText {
@@ -399,6 +428,22 @@ a.control:hover {
     transform: scale(1);
   }
 }
+@keyframes growSlide {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+@keyframes shrinkLogo {
+  0% {
+    transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 h1 span section .text-1 {
   animation: textReveal 0.8s ease-in-out;
   animation-delay: 0.1052631579s;
@@ -439,62 +484,6 @@ h1 {
 }
 h1 span section {
   animation: textHide 1.2s;
-}
-
-.top-bar-v2 {
-  padding: 8px;
-  color: white;
-  display: flex;
-  width: 100%;
-}
-.top-bar-v2 figure.logo {
-  width: 189px;
-  height: 27px;
-  margin: 0 10px;
-}
-.top-bar-v2 .left {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-}
-@media (min-width: 600px) {
-  .top-bar-v2 .left {
-    flex-direction: row;
-  }
-}
-.top-bar-v2 .left .details {
-  padding: 7.5px 15px;
-  display: flex;
-  flex-direction: row;
-}
-.top-bar-v2 .left .details h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 2px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-  margin-right: 6px;
-}
-.top-bar-v2 .left .details span {
-  font-size: 14px;
-  font-weight: 400;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-}
-.top-bar-v2 .left .details * {
-  margin: 0;
-  padding: 0;
-}
-.top-bar-v2 .right {
-  display: flex;
-}
-@media (min-width: 600px) {
-  .top-bar-v2 .right {
-    align-items: center;
-  }
-}
-
-.secondary h4 {
-  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

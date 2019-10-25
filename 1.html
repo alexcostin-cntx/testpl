@@ -18,7 +18,7 @@
             <p>How firmly dry air holds in place over the interior Northeast will determine the northern and western extent of Nestor's rain.</p>
             <div class="player-unit">
                 <div class="player-bg">
-                    <section class="slides">
+                    <section class="slides shrink">
                         <div class="slide-1 slide-active">
                             <img src="assets/1.png" alt="">
                         </div>
@@ -49,7 +49,7 @@
                         </section>
                         <section class="top-bar-v1">
                             <div class="left">
-                                <figure class="logo">
+                                <figure class="logo ">
                                     <img class="logoasset" src="assets/logo/logo1.png" alt="">
                                 </figure>
                                 <div class="details">
@@ -95,7 +95,7 @@
                         <section class="bottom">
                             <div class="left">
                                 <div class="video-controls">
-                                    <figure>
+                                    <figure class="hide-on-small">
                                         <a class="control" href="#">
                                             <svg class="icon">
                                                 <use xlink:href="#prev"></use>
@@ -109,7 +109,7 @@
                                             </svg>
                                         </a>
                                     </figure>
-                                    <figure>
+                                    <figure class="hide-on-small">
                                         <a class="control" href="#">
                                             <svg class="icon">
                                                 <use xlink:href="#next"></use>
@@ -127,7 +127,7 @@
                 <div class="sub-player">
                     <a class="main-title" href="#">
                         <h1 class="title-active">
-                            <span>
+                            <span class="">
                                 <section><figure class="text-1">AccuWeather’s</figure></section>
                                 <section><figure class="text-1">2019</figure></section>
                                 <section><figure class="text-3">total</figure></section>
@@ -203,30 +203,46 @@
         <section class="secondary">
             <div class="keep-top">
                     <form >
-                            <h4>Button</h4>
+                            <h4>Button color</h4>
                             <div>
-                                <input type="radio" id="btn1" name="contact" value="btn1" onclick="buttonOne()">
-                                <label for="btn1">Accent</label>
-                            
-                                <input type="radio" id="btn2" name="contact" value="btn2" onclick="buttonTwo()">
-                                <label for="btn2">Border</label>
-        
-                                <input type="radio" id="btn3" name="contact" value="btn3" onclick="buttonThree()">
-                                <label for="btn3">Inverted</label>
-                                
+                                <p>
+                                    <input type="radio" checked id="btn1" name="contact" value="btn1" onclick="buttonOne()">
+                                    <label for="btn1">accent</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="btn2" name="contact" value="btn2" onclick="buttonTwo()">
+                                    <label for="btn2">border</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="btn3" name="contact" value="btn3" onclick="buttonThree()">
+                                    <label for="btn3">inverted</label>
+                                </p>
                             </div>
                     </form>
                     <h4>Cycle logos</h4>
-                        <button data-logo="logo1" class="logobtn" >accuweather 1</button>
-                        <button data-logo="accu_wheather@2x" class="logobtn" >accuweather 2</button>
+                        <button data-logo="logo1" class="logobtn" >accuweather</button>
                         <button data-logo="artdaily" class="logobtn" >art daily</button>
                         <button data-logo="vice" class="logobtn" >vice</button>
                         <button data-logo="huffpost" class="logobtn" >huffpost</button>
                         <button data-logo="Examiner" class="logobtn" >examiner</button>
                         <button data-logo="salon" class="logobtn" >salon</button>
-                    
+
+                    <form >
+                        <h4>Headline</h4>
+                        <div>
+                            <p>
+                                <input type="radio" checked id="tit1" name="tit" value="tit1" onclick="changeTitleHover_v1();">
+                                <label for="tit1">hover: invert</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="tit2" name="tit" value="tit2" onclick="changeTitleHover_v2();">
+                                <label for="tit2">hover: lighten accent</label>
+                            </p>
+                        </div>
+                    </form>
+                    <h4>Toggle slide animation</h4>
+                    <button class="animslidebtn" >grow / shrink</button>
                     <hr style="opacity: 0.3">
-                    <p>please refresh after window resize</p>
             </div>
         </section>
     </div>

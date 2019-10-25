@@ -1,5 +1,5 @@
 const slider = document.querySelector('.slides');
-let asd = document.querySelector('.main-title');
+let mainTitle = document.querySelector('.main-title');
 
 const slideLeft = (e) => {
     let playerUnit = document.querySelector('.player-unit');
@@ -29,8 +29,8 @@ const slideLeft = (e) => {
       currentSlide.classList.add('slide-hidden');
         currentTitle.classList.add('display-none');
         currentTitle.classList.remove('title-active');
-        asd.lastElementChild.classList.remove('display-none');
-        asd.lastElementChild.classList.add('title-active');
+        mainTitle.lastElementChild.classList.remove('display-none');
+        mainTitle.lastElementChild.classList.add('title-active');
       currentSlide.classList.remove('slide-active');
       slider.lastElementChild.classList.remove('slide-hidden');
       slider.lastElementChild.classList.add('slide-active');
@@ -39,7 +39,6 @@ const slideLeft = (e) => {
 };
 
 const refreshTitle = () => {
-    let mainTitle = document.querySelector('.main-title');
     mainTitle.style.display='none';
     mainTitle.offsetHeight; // no need to store this anywhere, the reference is enough
     mainTitle.style.display='block';
@@ -113,6 +112,29 @@ document.addEventListener('click', function (event) {
 }, false);
 
 
-// change title 
+// change title hover
 // ---------------------
- const mainTitle = document.querySelector('.main-title');
+ const changeTitleHover_v2 = () => {
+    mainTitle.classList.add('alt');
+}
+const changeTitleHover_v1 = () => {
+    mainTitle.classList.remove('alt');
+}
+
+
+// slide animation
+// ---------------------
+document.addEventListener('click', function (event) {
+
+	if (!event.target.matches('.animslidebtn')) return;
+	event.preventDefault();
+    
+    if(slider.classList.contains('shrink')){
+        slider.classList.remove('shrink');
+        slider.classList.add('grow');
+    }else{
+        slider.classList.remove('grow');
+        slider.classList.add('shrink');
+    }
+    
+}, false);
